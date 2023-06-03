@@ -198,6 +198,12 @@ export const Table = () => {
     colorScheme = colorSchemeFromLocalStorage as ColorScheme;
   };
 
+  const handleToggleColorSchemeButton = () => {
+    setColorScheme(colorScheme === "dark" ? "light" : "dark");
+
+    colorScheme = colorSchemeFromLocalStorage as ColorScheme;
+  };
+
   useEventListener("storage", toggleColorScheme);
 
   return (
@@ -243,7 +249,9 @@ export const Table = () => {
                 >
                   Create New Account
                 </button>
-                <ChangeTheme />
+                <ChangeTheme
+                  handleToggleColorSchemeButton={handleToggleColorSchemeButton}
+                />
               </>
             )}
           />
@@ -266,18 +274,25 @@ interface Props {
   open: boolean;
 }
 
-const ChangeTheme = () => {
-  const { colorScheme, toggleColorScheme } = useMantineColorScheme();
-  const dark = colorScheme === "dark";
-
+const ChangeTheme = ({
+  colorTheme,
+  handleToggleColorSchemeButton,
+}: {
+  colorTheme: string;
+  handleToggleColorSchemeButton: Function;
+}) => {
   return (
     <ActionIcon
       variant="outline"
-      color={dark ? "yellow" : "blue"}
-      onClick={() => toggleColorScheme()}
+      color={colorTheme === "dark" ? "yellow" : "blue"}
+      onClick={() => handleToggleColorSchemeButton()}
       title="Toggle color scheme"
     >
-      {dark ? <IconSun size="1.1rem" /> : <IconMoonStars size="1.1rem" />}
+      {colorTheme === "dark" ? (
+        <IconSun size="1.1rem" />
+      ) : (
+        <IconMoonStars size="1.1rem" />
+      )}
     </ActionIcon>
   );
 };
