@@ -9,12 +9,10 @@ import {
 import {
   ColorSchemeProvider,
   MantineProvider,
-  useMantineTheme,
   ActionIcon,
-  useMantineColorScheme,
   ColorScheme,
 } from "@mantine/core";
-import { useEventListener, useReadLocalStorage } from "usehooks-ts";
+import useEventListener from "../hooks/useEventListener";
 import {
   IconTrash,
   IconEdit,
@@ -250,6 +248,7 @@ export const Table = () => {
                   Create New Account
                 </button>
                 <ChangeTheme
+                  colorScheme={colorScheme}
                   handleToggleColorSchemeButton={handleToggleColorSchemeButton}
                 />
               </>
@@ -275,20 +274,20 @@ interface Props {
 }
 
 const ChangeTheme = ({
-  colorTheme,
+  colorScheme,
   handleToggleColorSchemeButton,
 }: {
-  colorTheme: string;
+  colorScheme: string;
   handleToggleColorSchemeButton: Function;
 }) => {
   return (
     <ActionIcon
       variant="outline"
-      color={colorTheme === "dark" ? "yellow" : "blue"}
+      color={colorScheme === "dark" ? "yellow" : "blue"}
       onClick={() => handleToggleColorSchemeButton()}
       title="Toggle color scheme"
     >
-      {colorTheme === "dark" ? (
+      {colorScheme === "dark" ? (
         <IconSun size="1.1rem" />
       ) : (
         <IconMoonStars size="1.1rem" />
