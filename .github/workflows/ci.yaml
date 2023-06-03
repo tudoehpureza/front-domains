@@ -1,10 +1,10 @@
 # Extracted from https://github.com/JulianCataldo/gh-actions/tree/main
 
-name: Flowbite Admin Dashboard — Deploy to Demo to GitHub Pages
+name: Flowbite Admin Dashboard — Continuous Integration
 
 on:
   push:
-    branches: ["main"]
+    branches: ["next"]
 
   workflow_dispatch:
 
@@ -15,17 +15,9 @@ env:
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 jobs:
-  deploy:
+  ci:
     name: Deploy demo
     runs-on: ubuntu-20.04
-
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    permissions:
-      contents: read
-      id-token: write
-      pages: write
 
     steps:
       - name: Checkout repository
@@ -48,18 +40,19 @@ jobs:
           version: 7.18.1
           run_install: false
 
-      - name: Get PNPM store directory
-        id: pnpm-cache
-        run: |
-          echo "::set-output name=pnpm_cache_dir::$(pnpm store path)"
+      # NOTE: (Start fresh for Dev. CI only), for now.
+      # - name: Get PNPM store directory
+      #   id: pnpm-cache
+      #   run: |
+      #     echo "::set-output name=pnpm_cache_dir::$(pnpm store path)"
 
-      - uses: actions/cache@v3
-        name: Setup PNPM cache
-        with:
-          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
+      # - uses: actions/cache@v3
+      #   name: Setup PNPM cache
+      #   with:
+      #     path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
+      #     key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+      #     restore-keys: |
+      #       ${{ runner.os }}-pnpm-store-
 
       # ————————————————————————————————————————————————————————————————————————
 
@@ -69,16 +62,3 @@ jobs:
 
       - name: Build demo website (dist)
         run: "NODE_ENV=production pnpm run build"
-
-      # ————————————————————————————————————————————————————————————————————————
-
-      # NOTE: Could be swapped with Vercel, Netlify…
-
-      - name: Upload artifact — Demo (dist)
-        uses: actions/upload-pages-artifact@v1
-        with:
-          path: ./dist
-
-      - name: Deploy to GitHub Pages — Demo (dist)
-        id: deployment
-        uses: actions/deploy-pages@v1
