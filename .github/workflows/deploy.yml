@@ -23,6 +23,7 @@ jobs:
           # Add the necessary command to upload your site
 
   deploy:
+    name: Deploy Tudoehpureza
     needs: build
     runs-on: ubuntu-latest
     environment:
