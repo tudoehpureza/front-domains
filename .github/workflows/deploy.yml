@@ -17,18 +17,17 @@ jobs:
       - name: Checkout your repository using git
         uses: actions/checkout@v3
       - name: Install, build, and upload your site
-        run: |
-          npm install --no-frozen-lockfile
-          npm run build
-          # Add the necessary command to upload your site
+        uses: withastro/action@v0
 
   deploy:
     name: Deploy Tudoehpureza
     needs: build
     runs-on: ubuntu-latest
+
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
+
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
