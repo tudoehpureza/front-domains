@@ -1,11 +1,11 @@
 ---
-import ThemeLayout from "@layouts/ThemeLayout.astro";
-import { Table } from "@react-components/components/table/Table";
-import Card from "@components/Card.astro";
+import ThemeLayout from '@layouts/ThemeLayout.astro';
+import { TableWrapper } from '@react/components/tableWrapper/TableWrapper';
+import Card from '@components/Card.astro';
 ---
 
 <ThemeLayout title="Tudoehpureza">
-  <Card title="vasco">
-    <Table client:load />
-  </Card>
+	<Card title="vasco">
+		<TableWrapper client:load />
+	</Card>
 </ThemeLayout>

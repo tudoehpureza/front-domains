@@ -1,41 +1,50 @@
 {
-  "extends": "astro/tsconfigs/strict",
-  "compilerOptions": {
-    "strictNullChecks": true,
-    "jsx": "react-jsx",
-    "jsxImportSource": "react",
-    "baseUrl": ".",
-    "paths": {
-      "@/*": [
-        "src/*"
-      ],
-      "@components/*": [
-        "src/components/*"
-      ],
-      "@assets/*": [
-        "src/assets/*"
-      ],
-      "@modules/*": [
-        "src/modules/*"
-      ],
-      "@libs/*": [
-        "src/libs/*"
-      ],
-      "@apps/*": [
-        "src/apps/*"
-      ],
-      "@types/*": [
-        "src/types/*"
-      ],
-      "@layouts/*": [
-        "src/layouts/*"
-      ],
-      "@react-components/*": [
-        "src/shared/React/*"
-      ],
-      "@vue-components/*": [
-        "src/shared/Vue/*"
-      ]
-    }
-  }
+	"extends": "astro/tsconfigs/strict",
+	"compilerOptions": {
+		"strictNullChecks": true,
+		"jsx": "react-jsx",
+		"jsxImportSource": "react",
+		"baseUrl": ".",
+		"paths": {
+			"@/*": [
+				"src/*"
+			],
+			"@components/*": [
+				"src/components/*"
+			],
+			"@assets/*": [
+				"src/assets/*"
+			],
+			"@modules/*": [
+				"src/modules/*"
+			],
+			"@libs/*": [
+				"src/libs/*"
+			],
+			"@apps/*": [
+				"src/apps/*"
+			],
+			"@types/*": [
+				"src/types/*"
+			],
+			"@mocks/*": [
+				"src/mocks/*"
+			],
+			"@schemas/*": [
+				"src/schemas/*"
+			],
+			"@layouts/*": [
+				"src/layouts/*"
+			],
+			"@utils/*": [
+				"src/utils/*"
+			],
+			"@react/*": [
+				"src/shared/React/*"
+			],
+			"@vue/*": [
+				"src/shared/Vue/*"
+			]
+		}
+	}
 }
