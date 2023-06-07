@@ -18,50 +18,70 @@ export const CreateNewAccountModal = ({
 
 	const handleSubmit = () => {
 		//put your validation logic here
+		console.log({ values });
 		onSubmit(values);
 		onClose();
 	};
 
 	return (
-		<dialog
-			id="create_new_account"
-			className="modal modal-bottom sm:modal-middle"
-		>
-			<form method="dialog" className="modal-box">
-				<div className="flex flex-col justify-center justify-items-center items-center">
-					{columns.map((column) => (
-						<div
-							className="form-control w-full max-w-xs"
-							key={column.accessorKey}
-						>
-							<label className="label">
-								<span className="label-text">{column.accessorKey}</span>
-								<span className="label-text-alt">{column.header}</span>
-							</label>
-							<input
-								type="text"
-								placeholder="Type here"
-								className="input input-bordered w-full max-w-xs"
-								onChange={(e) =>
-									setValues({ ...values, [e.target.name]: e.target.value })
-								}
-							/>
-							<label className="label">
-								<span className="label-text-alt">Bottom Left label</span>
-								<span className="label-text-alt">Bottom Right label</span>
-							</label>
-						</div>
-					))}
-				</div>
-				<div className="modal-action">
-					<button className="btn" onClick={onClose}>
-						Cancel
-					</button>
-					<button className="btn" onClick={handleSubmit}>
-						Create New Account
+		<dialog id="create_new_account" className="modal">
+			<div className="modal-box rounded-lg  w-11/12 max-w-5xl overflow-hidden">
+				<div className="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
+					<h3 className="text-lg font-semibold">Hello!</h3>
+					<button
+						type="button"
+						htmlFor="create_new_account"
+						className="btn btn-sm btn-circle btn-ghost"
+					>
+						x
 					</button>
 				</div>
-			</form>
+				<form method="dialog" className="p-6 space-y-6">
+					<div className="grid grid-cols-2 gap-2 justify-items-center overflow-auto max-h-[40vh]">
+						{columns.map((column) => (
+							<div
+								className="form-control w-full max-w-xs"
+								key={column.accessorKey}
+							>
+								<label className="label">
+									<span className="label-text">{column.accessorKey}</span>
+									<span className="label-text-alt">{column.header}</span>
+								</label>
+								<input
+									type="text"
+									placeholder="Type here"
+									className="input input-bordered w-full max-w-xs"
+									onChange={(e) => {
+										console.log('e.target.name ===> ', e.target.name);
+										console.log('e.target.value ===> ', e.target.value);
+										console.log('values ===> ', values);
+										console.log(
+											'{ ...values, [e.target.name]: e.target.value } ===> ',
+											{ ...values, [e.target.name]: e.target.value },
+										);
+
+										setValues({ ...values, [e.target.name]: e.target.value });
+									}}
+								/>
+								<label className="label">
+									<span className="label-text-alt">Bottom Left label</span>
+									<span className="label-text-alt">Bottom Right label</span>
+								</label>
+							</div>
+						))}
+					</div>
+				</form>
+				<div className="flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
+					<div className="modal-action">
+						<button className="btn" onClick={onClose}>
+							Cancel
+						</button>
+						<button className="btn" onClick={handleSubmit}>
+							Create New Account
+						</button>
+					</div>
+				</div>
+			</div>
 		</dialog>
 	);
 };

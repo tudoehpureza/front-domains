@@ -24,10 +24,15 @@ import type { Domain } from '@schemas/domain.schema';
 import { RowActions } from './RowActions';
 
 import type { TableProps } from './types/table.type';
-import { ActionIcon, Box, Button, Flex, Tooltip } from '@mantine/core';
+import { ActionIcon, Flex, Tooltip } from '@mantine/core';
 import { IconPrinter } from '@tabler/icons-react';
+import { CreateNewAccountModal } from './modals/CreateNewAccountModal';
+import { ChangeTheme } from './buttons/ChangeTheme';
 
-export const Table: React.FC = () => {
+export const Table: React.FC<TableProps> = ({
+	colorScheme,
+	handleToggleColorSchemeButton,
+}) => {
 	const [createModalOpen, setCreateModalOpen] = React.useState(false);
 
 	const [tableData, setTableData] = React.useState<Domain[]>(() => data);
@@ -185,65 +190,66 @@ export const Table: React.FC = () => {
 	);
 
 	return (
-		<MantineReactTable
-			columns={columns}
-			data={tableData}
-			editingMode="modal" //default
-			enableColumnOrdering
-			enableEditing
-			onEditingRowSave={handleSaveRowEdits}
-			onEditingRowCancel={handleCancelRowEdits}
-			mantineTableProps={{
-				striped: true,
-			}}
-			renderRowActions={({ row, table }) => (
-				<RowActions table={table} handleDeleteRow={handleDeleteRow} row={row} />
-			)}
-			initialState={{ showGlobalFilter: true }}
-			// See the Table State Management docs for why we need to use the updater function like this
-			positionToolbarAlertBanner="bottom" //show selected rows count on bottom toolbar
-			//add custom action buttons to top-left of top toolbar
-			renderTopToolbarCustomActions={({ table }) => (
-				<Box sx={{ display: 'flex', gap: '16px', padding: '4px' }}>
-					<Button
-						color="teal"
-						onClick={() => {
-							alert('Create New Account');
-						}}
-						variant="filled"
-					>
-						Create Account
-					</Button>
-					<Button
-						color="red"
-						disabled={!table.getIsSomeRowsSelected()}
-						onClick={() => {
-							alert('Delete Selected Accounts');
-						}}
-						variant="filled"
-					>
-						Delete Selected Accounts
-					</Button>
-				</Box>
-			)}
-			//customize built-in buttons in the top-right of top toolbar
-			renderToolbarInternalActions={({ table }) => (
-				<Flex gap="xs" align="center">
-					{/* add custom button to print table  */}
-					<Tooltip withArrow label="Print">
-						<ActionIcon onClick={() => window.print()}>
-							<IconPrinter />
-						</ActionIcon>
-					</Tooltip>
-					{/* along-side built-in buttons in whatever order you want them */}
-					<MRT_ToggleDensePaddingButton table={table} />
+		<>
+			<MantineReactTable
+				columns={columns}
+				data={tableData}
+				editingMode="modal" //default
+				positionToolbarAlertBanner="bottom" //show selected rows count on bottom toolbar
+				enableColumnOrdering
+				enableEditing
+				onEditingRowSave={handleSaveRowEdits}
+				onEditingRowCancel={handleCancelRowEdits}
+				initialState={{ showGlobalFilter: true }}
+				// See the Table State Management docs for why we need to use the updater function like this
+				//add custom action buttons to top-left of top toolbar
+				mantineTableProps={{
+					striped: true,
+				}}
+				renderRowActions={({ row, table }) => (
+					<RowActions
+						table={table}
+						handleDeleteRow={handleDeleteRow}
+						row={row}
+					/>
+				)}
+				renderTopToolbarCustomActions={({ table }) => (
+					<div className="flex gap-4 p-4">
+						<ChangeTheme
+							handleToggleColorSchemeButton={handleToggleColorSchemeButton}
+						/>
+						<button
+							onClick={() => window.create_new_account.showModal()}
+							className="btn btn-ghost btn-xs sm:btn-sm md:btn-md lg:btn-lg"
+						>
+							Create Account
+						</button>
+					</div>
+				)}
+				//customize built-in buttons in the top-right of top toolbar
+				renderToolbarInternalActions={({ table }) => (
+					<Flex gap="xs" align="center">
+						<MRT_ShowHideColumnsButton table={table} />
+						<MRT_ToggleFiltersButton table={table} />
 
-					<MRT_ToggleFiltersButton table={table} />
-					<MRT_ShowHideColumnsButton table={table} />
-					<MRT_ToggleFullScreenButton table={table} />
-				</Flex>
-			)}
-		/>
+						{/* along-side built-in buttons in whatever order you want them */}
+						<MRT_ToggleDensePaddingButton table={table} />
+						{/* add custom button to print table  */}
+						<Tooltip withArrow label="Print">
+							<ActionIcon onClick={() => window.print()}>
+								<IconPrinter />
+							</ActionIcon>
+						</Tooltip>
+					</Flex>
+				)}
+			/>
+			<CreateNewAccountModal
+				columns={columns}
+				open={createModalOpen}
+				onClose={() => setCreateModalOpen(false)}
+				onSubmit={handleCreateNewRow}
+			/>
+		</>
 	);
 };
 
@@ -254,4 +260,6 @@ export const validateEmail = (email: string) =>
 		.match(
 			/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
 		);
+
 export const validateAge = (age: number) => age >= 18 && age <= 50;
+export const validateRequired = (value: string) => !!value.length;

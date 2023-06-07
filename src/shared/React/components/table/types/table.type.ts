@@ -1,4 +1,6 @@
-import type { Domain } from '@/schemas/domain.schema';
-import type { MRT_TableInstance } from 'mantine-react-table';
+import type { ColorScheme } from '@mantine/core';
 
-export type TableProps = {};
+export type TableProps = {
+	colorScheme: ColorScheme;
+	handleToggleColorSchemeButton: () => void;
+};

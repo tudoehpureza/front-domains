@@ -30,6 +30,13 @@ export const TableWrapper: React.FC<WrapperProps> = () => {
 		setColorScheme(newTheme as ColorScheme);
 	};
 
+	const handleToggleColorSchemeButton = () => {
+		console.log({ colorScheme });
+
+		setColorScheme(colorScheme === 'dark' ? 'light' : 'dark');
+		console.log('entrou');
+	};
+
 	useEventListener('storage', toggleColorScheme);
 
 	console.log('tableInstanceRef.current ===> ', tableInstanceRef.current);
@@ -39,7 +46,10 @@ export const TableWrapper: React.FC<WrapperProps> = () => {
 			toggleColorScheme={toggleColorScheme}
 		>
 			<MantineProvider theme={{ colorScheme }} withNormalizeCSS>
-				<Table />
+				<Table
+					colorScheme={colorScheme}
+					handleToggleColorSchemeButton={handleToggleColorSchemeButton}
+				/>
 			</MantineProvider>
 		</ColorSchemeProvider>
 	);

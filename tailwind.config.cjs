@@ -1,7 +1,11 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
 	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
-	plugins: [require('@tailwindcss/typography'), require('daisyui')],
+	plugins: [
+		require('@tailwindcss/typography'),
+		require('daisyui'),
+		require('tailwind-scrollbar'),
+	],
 	theme: {
 		screens: {
 			mobile: '640px',
@@ -9,6 +13,7 @@ module.exports = {
 			desktop: '1280px',
 		},
 		container: {
+			center: true,
 			padding: {
 				DEFAULT: '1rem',
 				mobile: '2rem',

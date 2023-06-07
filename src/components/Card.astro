@@ -1,28 +1,26 @@
 ---
 export interface Props {
-  title: string;
+	title: string;
 }
 
 const { title } = Astro.props;
 ---
 
 <div class="card p-2 block w-full overflow-y-hidden">
-  <div
-    class="card-body p-4 bg-base border border-gray-200 rounded-lg shadow-sm sm:p-6"
-  >
-    <div class="items-center justify-between lg:flex">
-      <div class="mb-4 lg:mb-0">
-        <h3 class="card-title mb-2 text-xl font-bold">
-          {title}
-        </h3>
-        <span class="text-base font-normal">
-          This is a list of latest transactions
-        </span>
-      </div>
-    </div>
+	<div
+		class="card-body p-4 bg-base border border-gray-200 rounded-lg shadow-sm sm:p-6"
+	>
+		<div class="items-center justify-between lg:flex">
+			<div class="mb-4 lg:mb-0">
+				<h3 class="card-title mb-2 text-xl font-bold">
+					{title}
+				</h3>
+				<span class="text-base font-normal">
+					This is a list of latest transactions
+				</span>
+			</div>
+		</div>
 
-    <div class="overflow-y-auto">
-      <slot />
-    </div>
-  </div>
+		<slot />
+	</div>
 </div>
