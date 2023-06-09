@@ -26,7 +26,7 @@ export const CreateNewAccountModal = ({
 	return (
 		<dialog id="create_new_account" className="modal">
 			<div className="modal-box rounded-lg  w-11/12 max-w-5xl overflow-hidden">
-				<div className="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
+				<div className="flex items-start justify-between p-4 border-b rounded-t">
 					<h3 className="text-lg font-semibold">Hello!</h3>
 					<button
 						type="button"
@@ -71,7 +71,7 @@ export const CreateNewAccountModal = ({
 						))}
 					</div>
 				</form>
-				<div className="flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
+				<div className="flex items-center p-6 space-x-2 border-t  rounded-b ">
 					<div className="modal-action">
 						<button className="btn" onClick={onClose}>
 							Cancel

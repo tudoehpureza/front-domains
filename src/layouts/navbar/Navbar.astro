@@ -4,56 +4,6 @@ import { themes } from '@types/themes.ts';
 
 <div class="navbar bg-base-100">
 	<div class="navbar-start">
-		<a class="btn btn-ghost normal-case text-xl">Tudoehpureza</a>
-
-		<div class="dropdown">
-			<label tabindex="0" class="btn btn-ghost lg:hidden">
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					class="h-5 w-5"
-					fill="none"
-					viewBox="0 0 24 24"
-					stroke="currentColor"
-				>
-					<path
-						stroke-linecap="round"
-						stroke-linejoin="round"
-						stroke-width="2"
-						d="M4 6h16M4 12h8m-8 6h16"
-					>
-					</path>
-				</svg>
-			</label>
-			<ul
-				tabindex="0"
-				class="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
-			>
-				<li><a>Item 1</a></li>
-				<li>
-					<a>Parent</a>
-					<ul class="p-2">
-						<li><a>Submenu 1</a></li>
-						<li><a>Submenu 2</a></li>
-					</ul>
-				</li>
-				<li><a>Item 3</a></li>
-			</ul>
-		</div>
-	</div>
-
-	<div class="navbar-end">
-		<div class="flex-none mr-2">
-			<select data-choose-theme class="select select-accent w-full max-w-xs">
-				<option disabled value="">Pick a Theme</option>
-				{
-					themes.map(({ theme, mode }) => (
-						<option value={theme} data-mode={mode}>
-							{theme}
-						</option>
-					))
-				}
-			</select>
-		</div>
 		<label for="my-drawer" class="btn btn-circle swap swap-rotate">
 			<!-- this hidden checkbox controls the state -->
 			<input type="checkbox" />
@@ -67,8 +17,8 @@ import { themes } from '@types/themes.ts';
 				viewBox="0 0 512 512"
 				><path
 					d="M64,384H448V341.33H64Zm0-106.67H448V234.67H64ZM64,128v42.67H448V128Z"
-				></path></svg
-			>
+				></path>
+			</svg>
 
 			<!-- close icon -->
 			<svg
@@ -79,9 +29,53 @@ import { themes } from '@types/themes.ts';
 				viewBox="0 0 512 512"
 				><polygon
 					points="400 145.49 366.51 112 256 222.51 145.49 112 112 145.49 222.51 256 112 366.51 145.49 400 256 289.49 366.51 400 400 366.51 289.49 256 400 145.49"
-				></polygon></svg
-			>
+				>
+				</polygon>
+			</svg>
 		</label>
+	</div>
+
+	<div class="navbar-center">
+		<a class="btn btn-ghost normal-case text-xl">Tudoehpureza</a>
+	</div>
+
+	<div class="navbar-end">
+		<div class="dropdown dropdown-end mr-3 text-sm rounded-full">
+			<label
+				tabindex="0"
+				class="btn btn-ghost btn-circle avatar ring ring-primary"
+			>
+				<div class="w-16 rounded-full bg-neutral-focus text-neutral-content">
+					<img
+						src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+					/>
+					{/*<span class="text-xl">AA</span>*/}
+				</div>
+			</label>
+			<ul
+				tabindex="0"
+				class="menu dropdown-content p-2 shadow bg-base-200 rounded-box w-52 z-[100]"
+			>
+				<li class="mt-1 border-t">
+					<button>Logout</button>
+				</li>
+				<li class="mt-1 border-t">
+					<select
+						data-choose-theme
+						class="select select-accent w-full max-w-xs"
+					>
+						<option disabled value="">Pick a Theme</option>
+						{
+							themes.map(({ theme, mode }) => (
+								<option value={theme} data-mode={mode}>
+									{theme}
+								</option>
+							))
+						}
+					</select>
+				</li>
+			</ul>
+		</div>
 	</div>
 </div>
 
