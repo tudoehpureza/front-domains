@@ -4,7 +4,10 @@ import { themes } from '@types/themes.ts';
 
 <div class="navbar bg-base-100">
 	<div class="navbar-start">
-		<label for="my-drawer" class="btn btn-circle swap swap-rotate">
+		<label
+			for="my-drawer"
+			class="btn btn-circle swap swap-rotate bg-transparent border-none"
+		>
 			<!-- this hidden checkbox controls the state -->
 			<input type="checkbox" />
 
@@ -56,10 +59,10 @@ import { themes } from '@types/themes.ts';
 				tabindex="0"
 				class="menu dropdown-content p-2 shadow bg-base-200 rounded-box w-52 z-[100]"
 			>
-				<li class="mt-1 border-t">
+				<li class="mt-1">
 					<button>Logout</button>
 				</li>
-				<li class="mt-1 border-t">
+				<li class="mt-1">
 					<select
 						data-choose-theme
 						class="select select-accent w-full max-w-xs"

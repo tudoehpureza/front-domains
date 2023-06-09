@@ -45,7 +45,6 @@ export const CreateNewAccountModal = ({
 							>
 								<label className="label">
 									<span className="label-text">{column.accessorKey}</span>
-									<span className="label-text-alt">{column.header}</span>
 								</label>
 								<input
 									type="text"
@@ -64,7 +63,7 @@ export const CreateNewAccountModal = ({
 									}}
 								/>
 								<label className="label">
-									<span className="label-text-alt">Bottom Left label</span>
+									<span></span>
 									<span className="label-text-alt">Bottom Right label</span>
 								</label>
 							</div>

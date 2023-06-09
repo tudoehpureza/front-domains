@@ -4,6 +4,6 @@
 
 @layer components {
   .container {
-    @apply mobile:max-w-[80vw] tablet:max-w-[99vw] desktop:max-w-[99vw];
+    @apply mobile:max-w-[80vw] tablet:max-w-[98vw] desktop:max-w-[98vw];
   }
 }
