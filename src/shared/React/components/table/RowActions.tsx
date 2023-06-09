@@ -11,7 +11,13 @@ export const RowActions = ({
 	return (
 		<div className="flex gap-4">
 			<div className="tooltip  tooltip-top" data-tip="Edit">
-				<button className="btn" onClick={() => table.setEditingRow(row)}>
+				<button
+					className="btn"
+					onClick={() => {
+						console.log('row ===> ', row);
+						table.setEditingRow(row);
+					}}
+				>
 					<IconEdit />
 				</button>
 			</div>

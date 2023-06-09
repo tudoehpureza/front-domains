@@ -30,7 +30,6 @@ import { CreateNewAccountModal } from './modals/CreateNewAccountModal';
 import { ChangeTheme } from './buttons/ChangeTheme';
 
 export const Table: React.FC<TableProps> = ({
-	colorScheme,
 	handleToggleColorSchemeButton,
 }) => {
 	const [createModalOpen, setCreateModalOpen] = React.useState(false);

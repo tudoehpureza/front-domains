@@ -71,7 +71,7 @@ export const CreateNewAccountModal = ({
 						))}
 					</div>
 				</form>
-				<div className="flex items-center p-6 space-x-2 border-t  rounded-b ">
+				<div className="flex items-center p-6 space-x-2 border-t rounded-b">
 					<div className="modal-action">
 						<button className="btn" onClick={onClose}>
 							Cancel
