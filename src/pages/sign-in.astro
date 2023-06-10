@@ -1,0 +1,63 @@
+---
+import UnauthorizedLayout from '@layouts/UnauthorizedLayout.astro';
+import bgPhoto from '../images/fabrizio-conti-lGYfGfLF6yo-unsplash.jpg';
+---
+
+<UnauthorizedLayout title="Tudoehpureza">
+	<!-- component -->
+	<div
+		class="flex h-screen w-full items-center justify-center bg-cover bg-no-repeat"
+		style={{ backgroundImage: `url(${bgPhoto})` }}
+	>
+		<div
+			class="glass rounded-xl bg-gray-800 bg-opacity-50 px-16 py-10 shadow-lg backdrop-blur-md max-sm:px-8"
+		>
+			<div>
+				<div class="mb-8 flex flex-col items-center">
+					<h1 class="mb-2 text-4xl text-gray-50">Already have an account?</h1>
+					<h3 class="text-lg text-gray-300">
+						Enter <strong>sign in</strong> details
+					</h3>
+				</div>
+				<form action="#">
+					<div class="mb-4 text-lg flex flex-col items-center">
+						<input
+							class="input input-bordered w-full input-lg max-w-xs rounded-3xl text-center text-gray-50 placeholder-gray-300"
+							type="text"
+							placeholder="id@email.com"
+						/>
+					</div>
+
+					<div class="mb-4 text-lg flex flex-col items-center">
+						<input
+							class="input input-bordered w-full input-lg max-w-xs rounded-3xl text-center text-gray-50 placeholder-gray-300"
+							type="password"
+							placeholder="*********"
+						/>
+					</div>
+					<div class="mb-4 text-lg flex flex-row items-center justify-center">
+						<a class="link link-hover text-sm text-gray-300">
+							Forgot Password?
+						</a>
+					</div>
+					<div class="mt-8 flex justify-center text-lg">
+						<button
+							type="submit"
+							class="btn rounded-3xl bg-opacity-50 px-10 py-2 btn-wide shadow-xl backdrop-blur-md transition-colors duration-300 text-gray-50"
+						>
+							Sign in
+						</button>
+					</div>
+					<div class="mt-8 flex justify-center text-lg">
+						<a
+							href="/sign-up"
+							class="link link-hover text-sm text-gray-300 font-bold"
+						>
+							Sign up
+						</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</UnauthorizedLayout>

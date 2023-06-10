@@ -3,6 +3,7 @@ import '@/global.css';
 import Navbar from '@layouts/navbar/Navbar.astro';
 import Sidebar from '@layouts/sidebar/Sidebar.astro';
 import Footer from '@layouts/footer/Footer.astro';
+import bgPhoto from '../images/fabrizio-conti-lGYfGfLF6yo-unsplash.jpg';
 
 export interface Props {
 	title: string;
@@ -36,7 +37,7 @@ const { title } = Astro.props;
 		<title>{title}</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 	</head>
-	<body>
+	<body style={{ backgroundImage: `url(${bgPhoto})`, height: '100vh' }}>
 		<Sidebar>
 			<Navbar />
 

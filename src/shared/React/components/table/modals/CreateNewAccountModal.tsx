@@ -1,6 +1,6 @@
 import React from 'react';
 
-import type { CreateNewAccountModalProps } from '../types/createNewAccountModal-type';
+import type { CreateNewAccountModalProps } from './createNewAccountModal-type';
 
 //example of creating a mantine dialog modal for creating new rows
 export const CreateNewAccountModal = ({
@@ -26,17 +26,14 @@ export const CreateNewAccountModal = ({
 	return (
 		<dialog id="create_new_account" className="modal">
 			<div className="modal-box rounded-lg  w-11/12 max-w-5xl overflow-hidden">
-				<div className="flex items-start justify-between p-4 border-b rounded-t">
-					<h3 className="text-lg font-semibold">Hello!</h3>
-					<button
-						type="button"
-						htmlFor="create_new_account"
-						className="btn btn-sm btn-circle btn-ghost"
-					>
-						x
-					</button>
-				</div>
 				<form method="dialog" className="p-6 space-y-6">
+					<button
+						htmlFor="create_new_account"
+						className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
+					>
+						✕
+					</button>
+					<h3 className="font-bold text-lg">Hello!</h3>
 					<div className="grid grid-cols-2 gap-2 justify-items-center overflow-auto max-h-[40vh]">
 						{columns.map((column) => (
 							<div
