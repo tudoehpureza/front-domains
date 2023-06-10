@@ -25,7 +25,7 @@ export const CreateNewAccountModal = ({
 
 	return (
 		<dialog id="create_new_account" className="modal">
-			<div className="modal-box rounded-lg  w-11/12 max-w-5xl overflow-hidden">
+			<div className="modal-box w-11/12 max-w-5xl overflow-hidden glass rounded-xl bg-gray-800 bg-opacity-50 shadow-lg backdrop-blur-md">
 				<form method="dialog" className="p-6 space-y-6">
 					<button
 						htmlFor="create_new_account"
@@ -40,13 +40,10 @@ export const CreateNewAccountModal = ({
 								className="form-control w-full max-w-xs"
 								key={column.accessorKey}
 							>
-								<label className="label">
-									<span className="label-text">{column.accessorKey}</span>
-								</label>
 								<input
 									type="text"
-									placeholder="Type here"
-									className="input input-bordered w-full max-w-xs"
+									placeholder={column.accessorKey}
+									className="input input-bordered w-full input-md max-w-xs rounded-3xl text-center text-gray-50 placeholder-gray-300"
 									onChange={(e) => {
 										console.log('e.target.name ===> ', e.target.name);
 										console.log('e.target.value ===> ', e.target.value);
@@ -59,8 +56,7 @@ export const CreateNewAccountModal = ({
 										setValues({ ...values, [e.target.name]: e.target.value });
 									}}
 								/>
-								<label className="label">
-									<span></span>
+								<label className="label flex flex-row items-center justify-end">
 									<span className="label-text-alt">Bottom Right label</span>
 								</label>
 							</div>

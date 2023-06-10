@@ -221,7 +221,7 @@ export const Table: React.FC<TableProps> = ({
 							onClick={() => window.create_new_account.showModal()}
 							className="btn btn-ghost btn-xs sm:btn-sm md:btn-md lg:btn-lg"
 						>
-							Create Account
+							New domain
 						</button>
 					</div>
 				)}
