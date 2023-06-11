@@ -1,4 +1,6 @@
 ---
+import bgPhoto from '../images/fabrizio-conti-lGYfGfLF6yo-unsplash.jpg';
+
 export interface Props {
 	title: string;
 }
@@ -13,7 +15,10 @@ const { title } = Astro.props;
 		<title>{title}</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 	</head>
-	<body>
+	<body
+		class="flex h-screen w-full items-center justify-center bg-cover bg-no-repeat"
+		style={{ backgroundImage: `url(${bgPhoto})` }}
+	>
 		<slot />
 	</body>
 </html>

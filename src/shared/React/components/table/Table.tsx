@@ -40,6 +40,7 @@ export const Table: React.FC<TableProps> = ({
 	}>({});
 
 	const handleCreateNewRow = (values: Domain) => {
+		console.log('values ==> ', values);
 		tableData.push(values);
 		setTableData([...tableData]);
 	};

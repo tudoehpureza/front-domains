@@ -25,7 +25,7 @@ export const CreateNewAccountModal = ({
 
 	return (
 		<dialog id="create_new_account" className="modal">
-			<div className="modal-box w-11/12 max-w-5xl overflow-hidden glass rounded-xl bg-gray-800 bg-opacity-50 shadow-lg backdrop-blur-md">
+			<div className="modal-box w-11/12 max-w-5xl overflow-hidden glass rounded-xl bg-gray-800 bg-opacity-50 shadow-lg backdrop-blur-md  x-16 py-10">
 				<form method="dialog" className="p-6 space-y-6">
 					<button
 						htmlFor="create_new_account"
@@ -33,7 +33,8 @@ export const CreateNewAccountModal = ({
 					>
 						✕
 					</button>
-					<h3 className="font-bold text-lg">Hello!</h3>
+					<h3 className="font-bold text-lg">NEW DOMAIN</h3>
+
 					<div className="grid grid-cols-2 gap-2 justify-items-center overflow-auto max-h-[40vh]">
 						{columns.map((column) => (
 							<div
@@ -43,7 +44,8 @@ export const CreateNewAccountModal = ({
 								<input
 									type="text"
 									placeholder={column.accessorKey}
-									className="input input-bordered w-full input-md max-w-xs rounded-3xl text-center text-gray-50 placeholder-gray-300"
+									name={column.accessorKey}
+									className="input input-bordered w-full input-lg max-w-xs rounded-3xl text-center text-gray-50 placeholder-gray-300"
 									onChange={(e) => {
 										console.log('e.target.name ===> ', e.target.name);
 										console.log('e.target.value ===> ', e.target.value);
@@ -53,7 +55,10 @@ export const CreateNewAccountModal = ({
 											{ ...values, [e.target.name]: e.target.value },
 										);
 
-										setValues({ ...values, [e.target.name]: e.target.value });
+										setValues({
+											...values,
+											[e.target.name]: e.target.value,
+										});
 									}}
 								/>
 								<label className="label flex flex-row items-center justify-end">
@@ -65,11 +70,8 @@ export const CreateNewAccountModal = ({
 				</form>
 				<div className="flex items-center p-6 space-x-2 border-t rounded-b">
 					<div className="modal-action">
-						<button className="btn" onClick={onClose}>
-							Cancel
-						</button>
 						<button className="btn" onClick={handleSubmit}>
-							Create New Account
+							Ok
 						</button>
 					</div>
 				</div>

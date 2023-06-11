@@ -1,0 +1,56 @@
+---
+import ThemeLayout from '@layouts/ThemeLayout.astro';
+import GlassCard from '@components/GlassCard.astro';
+---
+
+<ThemeLayout title="Tudoehpureza">
+	<GlassCard title={'Account Settings'}>
+		<h3 class="text-lg text-gray-300" slot="subtitle">
+			<strong>Check and update</strong> your details
+		</h3>
+
+		<form action="#">
+			<div class="grid grid-cols-1 gap-2 justify-items-center">
+				<div class="mb-4 text-lg flex flex-col items-center">
+					<input
+						class="input input-bordered w-full input-lg max-w-xs rounded-3xl text-center text-gray-50 placeholder-gray-300"
+						type="text"
+						placeholder="@"
+					/>
+				</div>
+
+				<div class="mb-4 text-lg flex flex-col items-center">
+					<input
+						class="input input-bordered w-full input-lg max-w-xs rounded-3xl text-center text-gray-50 placeholder-gray-300"
+						type="text"
+						placeholder="Phone"
+					/>
+				</div>
+
+				<div class="mb-4 text-lg flex flex-col items-center">
+					<input
+						class="input input-bordered w-full input-lg max-w-xs rounded-3xl text-center text-gray-50 placeholder-gray-300"
+						type="text"
+						placeholder="Name"
+					/>
+				</div>
+
+				<div class="mb-4 text-lg flex flex-col items-center">
+					<input
+						class="input input-bordered w-full input-lg max-w-xs rounded-3xl text-center text-gray-50 placeholder-gray-300"
+						type="text"
+						placeholder="Surname"
+					/>
+				</div>
+			</div>
+			<div class="mt-8 flex justify-center text-lg">
+				<button
+					type="submit"
+					class="btn rounded-3xl bg-opacity-50 px-10 py-2 btn-wide shadow-xl backdrop-blur-md transition-colors duration-300 text-gray-50"
+				>
+					Update
+				</button>
+			</div>
+		</form>
+	</GlassCard>
+</ThemeLayout>

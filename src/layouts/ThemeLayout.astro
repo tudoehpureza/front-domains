@@ -37,7 +37,10 @@ const { title } = Astro.props;
 		<title>{title}</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 	</head>
-	<body style={{ backgroundImage: `url(${bgPhoto})`, height: '100vh' }}>
+	<body
+		class="flex flex-col w-full items-center justify-between bg-cover bg-no-repeat"
+		style={{ backgroundImage: `url(${bgPhoto})` }}
+	>
 		<Sidebar>
 			<Navbar />
 

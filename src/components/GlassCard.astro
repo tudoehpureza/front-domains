@@ -1,0 +1,21 @@
+---
+export interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<div
+	class="glass rounded-xl bg-gray-800 bg-opacity-50 px-16 py-10 shadow-lg backdrop-blur-md max-sm:px-8"
+>
+	<div>
+		<div class="mb-8 flex flex-col items-center">
+			<h1 class="mb-2 text-4xl text-gray-50">{title}</h1>
+			<h3 class="text-lg text-gray-300">
+				<slot name="subtitle" />
+			</h3>
+		</div>
+		<slot />
+	</div>
+</div>
