@@ -5,14 +5,7 @@ import {
 	MRT_Cell,
 	MRT_ColumnDef,
 	MRT_Row,
-	MRT_DensityState,
-	MRT_TableInstance,
-	MRT_VisibilityState,
-	MRT_PaginationState,
-	MRT_RowSelectionState,
 	MRT_ToggleDensePaddingButton,
-	MRT_ToggleFullScreenButton,
-	MRT_GlobalFilterTextInput,
 	MRT_ToggleFiltersButton,
 	MRT_ShowHideColumnsButton,
 } from 'mantine-react-table';
@@ -200,7 +193,7 @@ export const Table: React.FC<TableProps> = ({
 				enableEditing
 				onEditingRowSave={handleSaveRowEdits}
 				onEditingRowCancel={handleCancelRowEdits}
-				initialState={{ showGlobalFilter: true }}
+				initialState={{ showGlobalFilter: true, density: 'xs' }}
 				// See the Table State Management docs for why we need to use the updater function like this
 				//add custom action buttons to top-left of top toolbar
 				mantineTableProps={{
