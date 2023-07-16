@@ -1,0 +1,175 @@
+---
+export interface Props {
+	name: string;
+	email: string;
+	url: string;
+	is_active: boolean;
+	progress_bar: number;
+}
+
+const { name, email, is_active, url, progress_bar } = Astro.props;
+---
+
+<div class="card w-full bg-[#2B2C30] shadow-xl">
+	<div class="card-body flex flex-row rounded-lg items-center space-x-3">
+		<div class="flex-shrink-0">
+			<img
+				class="h-12 w-12 rounded-full object-cover"
+				src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+				alt="Avatar"
+			/>
+		</div>
+
+		<div class="flex-1 min-w-0">
+			<p class="text-sm font-medium truncate">{name}</p>
+			<p class="text-sm truncate">{email}</p>
+			<div>
+				<div class="badge badge-info gap-2">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						fill="none"
+						viewBox="0 0 24 24"
+						class="inline-block w-4 h-4 stroke-current"
+					>
+						<path
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							stroke-width="2"
+							d="M6 18L18 6M6 6l12 12"
+						>
+						</path>
+					</svg>
+					info
+				</div>
+				<div class="badge badge-success gap-2">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						fill="none"
+						viewBox="0 0 24 24"
+						class="inline-block w-4 h-4 stroke-current"
+					>
+						<path
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							stroke-width="2"
+							d="M6 18L18 6M6 6l12 12"
+						>
+						</path>
+					</svg>
+					success
+				</div>
+				<div class="badge badge-warning gap-2">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						fill="none"
+						viewBox="0 0 24 24"
+						class="inline-block w-4 h-4 stroke-current"
+					>
+						<path
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							stroke-width="2"
+							d="M6 18L18 6M6 6l12 12"
+						>
+						</path>
+					</svg>
+					warning
+				</div>
+				<div class="badge badge-error gap-2">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						fill="none"
+						viewBox="0 0 24 24"
+						class="inline-block w-4 h-4 stroke-current"
+					>
+						<path
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							stroke-width="2"
+							d="M6 18L18 6M6 6l12 12"
+						>
+						</path>
+					</svg>
+					error
+				</div>
+			</div>
+			<div>
+				<button class="btn btn-sm">
+					Inbox
+					<div class="badge">+99</div>
+				</button>
+				<button class="btn btn-sm">
+					Inbox
+					<div class="badge badge-secondary">+99</div>
+				</button>
+			</div>
+		</div>
+
+		<div>
+			<div class="grid grid-flow-col gap-5 text-center auto-cols-max">
+				<div
+					class="kbd flex flex-col p-2 bg-neutral rounded-box text-neutral-content"
+				>
+					<span class="countdown font-mono text-3xl">
+						<span style="--value:15;"></span>
+					</span>
+					days
+				</div>
+				<div
+					class="kbd flex flex-col p-2 bg-neutral rounded-box text-neutral-content"
+				>
+					<span class="countdown font-mono text-3xl">
+						<span style="--value:10;"></span>
+					</span>
+					hours
+				</div>
+				<div
+					class="kbd flex flex-col p-2 bg-neutral rounded-box text-neutral-content"
+				>
+					<span class="countdown font-mono text-3xl">
+						<span style="--value:24;"></span>
+					</span>
+					min
+				</div>
+				<div
+					class="kbd flex flex-col p-2 bg-neutral rounded-box text-neutral-content"
+				>
+					<span class="countdown font-mono text-3xl">
+						<span style="--value:58;"></span>
+					</span>
+					sec
+				</div>
+			</div>
+		</div>
+
+		<div
+			class=`tooltip ${progress_bar < 100 && 'tooltip-error'} ${progress_bar < 69 && 'tooltip-warning'} ${progress_bar < 29 && 'tooltip-success'} inline-flex items-center text-base font-semibold`
+			data-tip={progress_bar + '%'}
+		>
+			<progress
+				class="progress progress-primary w-56"
+				value={progress_bar}
+				max="100"></progress>
+		</div>
+
+		<div class="inline-flex items-center text-base font-semibold">
+			{
+				url && (
+					<a href={url} class="btn">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="24"
+							height="24"
+							viewBox="0 0 24 24"
+						>
+							<path
+								fill="currentColor"
+								d="M2.01 21L23 12L2.01 3L2 10l15 2l-15 2z"
+							/>
+						</svg>
+					</a>
+				)
+			}
+		</div>
+	</div>
+</div>

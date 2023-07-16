@@ -1,11 +1,36 @@
 ---
 import ThemeLayout from '@layouts/ThemeLayout.astro';
-import { TableWrapper } from '@react/components/tableWrapper/TableWrapper';
+//import { TableWrapper } from '@react/components/tableWrapper/TableWrapper';
 import Card from '@components/Card.astro';
+import Row from '@layouts/listview/row/Row.astro';
+
+import GlassCard from '@components/GlassCard.astro';
+import { data } from '@mocks/table/makeData';
+
+const tooltip_type = {
+	success: 'bg-green-500',
+	warning: 'bg-yellow-500',
+	error: 'bg-red-500',
+};
 ---
 
 <ThemeLayout title="Tudoehpureza">
-	<Card title="vasco">
-		<TableWrapper client:load />
-	</Card>
+	<GlassCard title="vasco">
+		{/*<TableWrapper client:load />*/}
+		<ul class="w-full divide-y divide-gray-200 dark:divide-gray-700">
+			{
+				data.map((row) => (
+					<li class="py-3 sm:py-4">
+						<Row
+							name={row.name}
+							is_active={row.is_active}
+							url={row.url}
+							email={row.emails[0]}
+							progress_bar={row.progress_bar}
+						/>
+					</li>
+				))
+			}
+		</ul>
+	</GlassCard>
 </ThemeLayout>
