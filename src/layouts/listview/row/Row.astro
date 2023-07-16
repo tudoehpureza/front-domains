@@ -10,7 +10,7 @@ export interface Props {
 const { name, email, is_active, url, progress_bar } = Astro.props;
 ---
 
-<div class="card w-full bg-[#2B2C30] shadow-xl">
+<div class="card w-auto bg-[#2B2C30] shadow-xl mr-2">
 	<div class="card-body flex flex-row rounded-lg items-center space-x-3">
 		<div class="flex-shrink-0">
 			<img
@@ -21,86 +21,22 @@ const { name, email, is_active, url, progress_bar } = Astro.props;
 		</div>
 
 		<div class="flex-1 min-w-0">
-			<p class="text-sm font-medium truncate">{name}</p>
-			<p class="text-sm truncate">{email}</p>
-			<div>
-				<div class="badge badge-info gap-2">
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						fill="none"
-						viewBox="0 0 24 24"
-						class="inline-block w-4 h-4 stroke-current"
-					>
-						<path
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							stroke-width="2"
-							d="M6 18L18 6M6 6l12 12"
-						>
-						</path>
-					</svg>
-					info
-				</div>
-				<div class="badge badge-success gap-2">
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						fill="none"
-						viewBox="0 0 24 24"
-						class="inline-block w-4 h-4 stroke-current"
-					>
-						<path
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							stroke-width="2"
-							d="M6 18L18 6M6 6l12 12"
-						>
-						</path>
-					</svg>
-					success
-				</div>
-				<div class="badge badge-warning gap-2">
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						fill="none"
-						viewBox="0 0 24 24"
-						class="inline-block w-4 h-4 stroke-current"
-					>
-						<path
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							stroke-width="2"
-							d="M6 18L18 6M6 6l12 12"
-						>
-						</path>
-					</svg>
-					warning
-				</div>
-				<div class="badge badge-error gap-2">
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						fill="none"
-						viewBox="0 0 24 24"
-						class="inline-block w-4 h-4 stroke-current"
-					>
-						<path
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							stroke-width="2"
-							d="M6 18L18 6M6 6l12 12"
-						>
-						</path>
-					</svg>
-					error
-				</div>
+			<p class="text-sm font-medium truncate font-mono">{name}</p>
+			<p class="text-sm truncate mt-1 font-mono">{email}</p>
+			<div class="mt-1">
+				<div class="badge badge-info gap-2 font-mono">info</div>
+				<div class="badge badge-success gap-2 font-mono">success</div>
+				<div class="badge badge-warning gap-2 font-mono">warning</div>
+				<div class="badge badge-error gap-2 font-mono">error</div>
 			</div>
-			<div>
-				<button class="btn btn-sm">
-					Inbox
-					<div class="badge">+99</div>
+			<div class="mt-1">
+				<button class="btn btn-sm font-mono lowercase">
+					inbox
+					<div class="badge font-mono">+99</div>
 				</button>
-				<button class="btn btn-sm">
-					Inbox
-					<div class="badge badge-secondary">+99</div>
+				<button class="btn btn-sm font-mono text-cap lowercase">
+					inbox
+					<div class="badge badge-secondary font-mono">+99</div>
 				</button>
 			</div>
 		</div>

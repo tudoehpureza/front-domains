@@ -16,7 +16,9 @@ const { title } = Astro.props;
 				<slot name="subtitle" />
 			</h3>
 		</div>
-		<div class="max-h-[60vh] overflow-y-scroll">
+		<div
+			class="max-h-[60vh] overflow-y-scroll scrollbar-thin scrollbar-thumb-rounded-md scrollbar-thumb-gray-700"
+		>
 			<slot />
 		</div>
 	</div>
