@@ -19,14 +19,14 @@ const tooltip_type = {
 		{/*<TableWrapper client:load />*/}
 		<ul class="w-full divide-y divide-gray-200 dark:divide-gray-700">
 			{
-				data.map((row) => (
+				data.map(({ name, is_active, url, progress_bar, emails }) => (
 					<li class="py-3 sm:py-4">
 						<Row
-							name={row.name}
-							is_active={row.is_active}
-							url={row.url}
-							email={row.emails[0]}
-							progress_bar={row.progress_bar}
+							name={name}
+							is_active={is_active}
+							url={url}
+							email={emails[0]}
+							progress_bar={progress_bar}
 						/>
 					</li>
 				))
