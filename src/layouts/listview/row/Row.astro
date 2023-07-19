@@ -20,6 +20,12 @@ const { name, email, is_active, url, progress_bar } = Astro.props;
 			/>
 		</div>
 
+		<div>
+			<div class="badge badge-warning badge-sm"></div>
+			<div class="badge badge-success badge-md"></div>
+			<div class="badge badge-error badge-sm"></div>
+		</div>
+
 		<div class="flex-1 min-w-0">
 			<p class="text-sm font-medium truncate font-mono">{name}</p>
 			<p class="text-sm truncate mt-1 font-mono">{email}</p>
@@ -76,16 +82,15 @@ const { name, email, is_active, url, progress_bar } = Astro.props;
 					sec
 				</div>
 			</div>
-		</div>
-
-		<div
-			class=`tooltip ${progress_bar < 100 && 'tooltip-error'} ${progress_bar < 69 && 'tooltip-warning'} ${progress_bar < 29 && 'tooltip-success'} inline-flex items-center text-base font-semibold`
-			data-tip={progress_bar + '%'}
-		>
-			<progress
-				class="progress progress-primary w-56"
-				value={progress_bar}
-				max="100"></progress>
+			<div
+				class=`tooltip ${progress_bar < 100 && 'tooltip-error'} ${progress_bar < 69 && 'tooltip-warning'} ${progress_bar < 29 && 'tooltip-success'} inline-flex items-center text-base font-semibold`
+				data-tip={progress_bar + '%'}
+			>
+				<progress
+					class="progress progress-secondary w-72"
+					value={progress_bar}
+					max="100"></progress>
+			</div>
 		</div>
 
 		<div class="inline-flex items-center text-base font-semibold">
