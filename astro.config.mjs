@@ -11,9 +11,9 @@ const DEV_PORT = 2121;
 // https://astro.build/config
 export default defineConfig({
 	site: process.env.CI
-		? 'https://tudoehpureza.github.io'
+		? 'https://tudoehpureza.github.io/front-domains'
 		: `http://localhost:${DEV_PORT}`,
-	base: process.env.CI ? '/' : undefined,
+	base: process.env.CI ? '/front-domains' : undefined,
 	//output: 'server',
 	//adapter: cloudflare(),
 
