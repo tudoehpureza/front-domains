@@ -13,7 +13,7 @@ export default defineConfig({
 	site: process.env.CI
 		? 'https://tudoehpureza.github.io'
 		: `http://localhost:${DEV_PORT}`,
-	base: process.env.CI ? '/front-domains' : undefined,
+	base: process.env.CI ? '/' : undefined,
 	//output: 'server',
 	//adapter: cloudflare(),
 

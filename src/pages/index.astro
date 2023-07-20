@@ -19,17 +19,29 @@ const tooltip_type = {
 		{/*<TableWrapper client:load />*/}
 		<ul class="w-full divide-y divide-gray-200 dark:divide-gray-700">
 			{
-				data.map(({ name, is_active, url, progress_bar, emails }) => (
-					<li class="py-3 sm:py-4">
-						<Row
-							name={name}
-							is_active={is_active}
-							url={`/front-domains${url}`}
-							email={emails[0]}
-							progress_bar={progress_bar}
-						/>
-					</li>
-				))
+				data.map(
+					({
+						name,
+						is_active,
+						url,
+						progress_bar,
+						emails,
+						purchase_date,
+						expiration_date,
+					}) => (
+						<li class="py-3 sm:py-4">
+							<Row
+								name={name}
+								is_active={is_active}
+								url={url}
+								email={emails[0]}
+								progress_bar={progress_bar}
+								purchase_date={purchase_date}
+								expiration_date={expiration_date}
+							/>
+						</li>
+					),
+				)
 			}
 		</ul>
 	</GlassCard>

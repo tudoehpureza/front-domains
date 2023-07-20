@@ -5,9 +5,24 @@ export interface Props {
 	url: string;
 	is_active: boolean;
 	progress_bar: number;
+	expiration_date: Date;
+	purchase_date: Date;
 }
 
-const { name, email, is_active, url, progress_bar } = Astro.props;
+const { name, email, is_active, url, expiration_date, purchase_date } =
+	Astro.props;
+
+const domain_status = is_active ? 'success' : 'error';
+
+const calculateTimePercentage = (startDate: Date, endDate: Date): number => {
+	const timeDifferenceMs = endDate.getTime() - startDate.getTime();
+	const daysDifference = timeDifferenceMs / (1000 * 3600 * 24); // Number of milliseconds in a day: 1000 ms * 60 sec * 60 min * 24 hours
+	const totalDaysInBetween = 365.25; // Average number of days in a year (including leap years)
+
+	return (daysDifference / totalDaysInBetween) * 100;
+};
+
+const progress_bar = calculateTimePercentage(purchase_date, expiration_date);
 ---
 
 <div class="card w-auto bg-[#2B2C30] shadow-xl mr-2">
@@ -18,17 +33,19 @@ const { name, email, is_active, url, progress_bar } = Astro.props;
 				src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
 				alt="Avatar"
 			/>
+			<p class="text-sm font-medium truncate font-mono">{name}</p>
 		</div>
 
 		<div>
-			<div class="badge badge-warning badge-sm"></div>
-			<div class="badge badge-success badge-md"></div>
-			<div class="badge badge-error badge-sm"></div>
+			<div class=`badge badge-${domain_status} badge-sm`></div>
+			<div class=`badge badge-${domain_status} badge-md`></div>
+			<div class=`badge badge-${domain_status} badge-sm`></div>
 		</div>
 
 		<div class="flex-1 min-w-0">
-			<p class="text-sm font-medium truncate font-mono">{name}</p>
-			<p class="text-sm truncate mt-1 font-mono">{email}</p>
+			<p class="text-sm truncate mt-1 font-mono">
+				Owner: <strong>{email}</strong>
+			</p>
 			<div class="mt-1">
 				<div class="badge badge-info gap-2 font-mono">info</div>
 				<div class="badge badge-success gap-2 font-mono">success</div>
@@ -37,11 +54,11 @@ const { name, email, is_active, url, progress_bar } = Astro.props;
 			</div>
 			<div class="mt-1">
 				<button class="btn btn-sm font-mono lowercase">
-					inbox
+					Phone
 					<div class="badge font-mono">+99</div>
 				</button>
 				<button class="btn btn-sm font-mono text-cap lowercase">
-					inbox
+					Email
 					<div class="badge badge-secondary font-mono">+99</div>
 				</button>
 			</div>
